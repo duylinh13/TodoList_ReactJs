@@ -12,8 +12,9 @@ const TaskList = ({ tasks, handleDelete, handleEdit }) => {
             {task.name} - Level {task.level}
           </span>
           <div className="task-actions">
-            <EditTask index={index} task={task} handleEdit={handleEdit} />
-            <DeleteTask index={index} handleDelete={handleDelete} />
+            {/* Truyền task thay vì index và task */}
+            <EditTask task={task} handleEdit={handleEdit} />
+            <DeleteTask task={task} handleDelete={handleDelete} />
           </div>
         </div>
       ))}

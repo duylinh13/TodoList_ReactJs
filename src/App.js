@@ -1,18 +1,21 @@
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 import TaskList from "./TaskList";
 import AddTask from "./AddTask";
-import "./index.css"; // Import your CSS file
+import EditTask from "./EditTask";
+import "./index.css";
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [sortType, setSortType] = useState("name");
+  const [selectedTask, setSelectedTask] = useState(null);
 
   const handleAdd = (task) => {
     setTasks([...tasks, task]);
-    sortTasks(sortType); // Sắp xếp lại danh sách sau khi thêm
+    sortTasks(sortType);
   };
 
   const handleDelete = (index) => {
@@ -21,10 +24,13 @@ const App = () => {
     setTasks(newTasks);
   };
 
-  const handleEdit = (index, editedTask) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index] = editedTask;
+  const handleEdit = (editedTask) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === editedTask.id ? editedTask : task
+    );
     setTasks(updatedTasks);
+    setSelectedTask(null); // Ẩn form chỉnh sửa sau khi chỉnh sửa thành công
+    sortTasks(sortType);
   };
 
   const handleSearch = (searchTerm) => {
@@ -49,6 +55,10 @@ const App = () => {
     setFilteredTasks(sortedTasks);
   };
 
+  const handleEditClick = (task) => {
+    setSelectedTask(task); // Hiển thị form chỉnh sửa khi nhấp vào nút chỉnh sửa
+  };
+
   return (
     <div className="container">
       <Header />
@@ -66,10 +76,17 @@ const App = () => {
           </div>
           <SearchBar handleSearch={handleSearch} />
           <AddTask handleAdd={handleAdd} />
+          {selectedTask && (
+            <EditTask
+              selectedTask={selectedTask}
+              handleEdit={handleEdit}
+              setSelectedTask={setSelectedTask}
+            />
+          )}
           <TaskList
             tasks={filteredTasks.length ? filteredTasks : tasks}
             handleDelete={handleDelete}
-            handleEdit={handleEdit}
+            handleEditClick={handleEditClick} // Truyền hàm để xử lý khi người dùng nhấp vào nút chỉnh sửa
           />
         </div>
       </div>

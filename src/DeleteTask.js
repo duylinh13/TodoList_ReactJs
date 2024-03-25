@@ -1,8 +1,9 @@
+// DeleteTask.js
 import React from "react";
 
-const DeleteTask = ({ index, handleDelete }) => {
+const DeleteTask = ({ task, handleDelete }) => {
   const handleClick = () => {
-    handleDelete(index);
+    handleDelete(task);
   };
 
   return <button onClick={handleClick}>Delete</button>;
