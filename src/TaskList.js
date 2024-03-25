@@ -1,3 +1,4 @@
+// TaskList.js
 import React from "react";
 import EditTask from "./EditTask";
 import DeleteTask from "./DeleteTask";
@@ -8,10 +9,12 @@ const TaskList = ({ tasks, handleDelete, handleEdit }) => {
       {tasks.map((task, index) => (
         <div key={index} className="task">
           <span>
-            {task.name} - {task.level}
+            {task.name} - Level {task.level}
           </span>
-          <EditTask index={index} task={task} handleEdit={handleEdit} />
-          <DeleteTask index={index} handleDelete={handleDelete} />
+          <div className="task-actions">
+            <EditTask index={index} task={task} handleEdit={handleEdit} />
+            <DeleteTask index={index} handleDelete={handleDelete} />
+          </div>
         </div>
       ))}
     </div>

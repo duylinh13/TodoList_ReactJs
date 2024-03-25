@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
+/* Header styles */
 .header {
   background-color: #3498db;
   color: white;
@@ -19,62 +20,142 @@ code {
   text-align: center;
 }
 
+/* Sort options styles */
+.sort-options {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* SearchBar styles */
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+.search-bar input {
+  flex: 1;
+  margin-right: 10px; /* Adjust as needed */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+/* TaskList styles */
+.task-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Canh giữa các cột */
+  margin-top: 20px; /* Khoảng cách với phần trên */
+}
+
+.task {
+  width: 100%; /* Độ rộng là 100% để hiển thị ngang qua hàng */
+  margin-bottom: 20px; /* Khoảng cách giữa các task */
+  padding: 20px; /* Tăng padding */
+  border-radius: 10px; /* Bo tròn góc */
+  background-color: #f9f9f9; /* Màu nền */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+  display: flex; /* Sử dụng Flexbox */
+  align-items: center; /* Căn chỉnh các phần tử theo chiều dọc */
+  justify-content: space-between; /* Căn chỉnh các phần tử theo chiều ngang */
+}
+
+.task-name {
+  font-weight: bold;
+}
+
+.task-level {
+  color: #3498db;
+  font-style: italic;
+}
+
+.task-actions {
+  display: flex;
+  gap: 5px;
+}
+
 /* AddTask.css */
 .add-task {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .add-task form {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  grid-gap: 10px;
 }
 
 .add-task input[type="text"],
 .add-task select,
 .add-task button {
   margin-right: 10px;
-  padding: 10px;
+  padding: 12px;
+  border: 1px solid #3498db;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .add-task button {
   cursor: pointer;
-}
-
-/* SearchBar.css */
-.search-bar {
-  margin-bottom: 20px;
-}
-
-.search-bar input {
-  width: 100%;
-  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+.add-task button:hover {
+  background-color: #2980b9;
 }
 
 /* TaskList.css */
 .task-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
 .task {
-  width: calc(33.33% - 20px); /* Adjust as needed */
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .task span {
-  font-size: 16px;
-  margin-right: 10px;
+  font-weight: bold;
 }
 
-.task button {
-  margin-left: 10px;
+.task-actions {
+  display: flex;
+  gap: 5px;
+}
+
+/* EditTask.css */
+.edit-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
   cursor: pointer;
+  background-color: #ffd700; /* Màu vàng */
+  color: #000; /* Màu chữ đen */
+}
+
+/* DeleteTask.css */
+.delete-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #e74c3c; /* Màu đỏ */
+  color: #fff; /* Màu chữ trắng */
 }
